@@ -30,7 +30,7 @@ DIRECTION_DOWN = (0, 1)
 # Background color of the snake grid.
 COLOR_BACKGROUND = (255, 255, 255)  # rgb color for white
 # This is the color of the snake's head. 
-COLOR_SNAKE_HEAD = (255, 0, 0)      # rgb color for red
+COLOR_SNAKE_HEAD = (30,144,203)      # rgb color for red
 # This is the color of the rest of the snake.
 COLOR_SNAKE = (0, 255, 0)           # rgb color for green
 # This is the color for the snake's food.
@@ -81,13 +81,8 @@ def snake_ate_food(snake, food):
     This function should return True if the head of the snake is in the same position as food.
     """
     if snake[0] == food:
-        food = []
-        while food == []:
-            food = [random.randint(1, GRID_WIDTH), random.randint(1, GRID_HEIGHT)]
-            
-            if food in snake: food = []
-                
-        return (food[0], food[1])
+        return True
+    return False
 
 def snake_ran_out_of_bounds(snake):
     """Returns whether the snake has ran off one of the four edges of the grid.
@@ -132,10 +127,7 @@ def get_snake_speed(snake):
     The speed at the beginning of the game should be 5. Once the snake has eaten 10 pieces of food,
     the speed of the game should increase (by how much is up to you).
     """
-    speed = 5
-    multiplier = len(snake) // 10 - 1
-    added_speed = speed * (2 * multiplier)
-    return speed + added_speed
+    return len(snake) - 5
                
 def move_snake(snake, direction, food):
     """Moves the snake one space in the direction specified and returns whether food was eaten.
@@ -298,4 +290,3 @@ def start_game():
 
 # Start the snake game.
 start_game()
-
